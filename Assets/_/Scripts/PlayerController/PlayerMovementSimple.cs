@@ -1,13 +1,18 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(GroundChecker))]
 public class PlayerMovementSimple : MonoBehaviour, IPlayerMovement
 {
     [SerializeField] private GroundChecker _groundChecker;
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private float _jumpForce = 1f;
-    [SerializeField] private float _speed = 2f;
+    [SerializeField] private float _jumpForce = 1.5f;
+    [SerializeField] private float _speedMax = 5f;
+
+    private float _currentSpeed;
+    
+    public bool IsGrounded => _groundChecker.IsGrounded;
+
+    public float Speed => _currentSpeed;
 
     private void Awake()
     {
@@ -17,8 +22,9 @@ public class PlayerMovementSimple : MonoBehaviour, IPlayerMovement
 
     public void Move(float horizontalSpeed)
     {
+        _currentSpeed = horizontalSpeed;
         Vector2 velocity = _rigidbody.linearVelocity;
-        velocity.x = _speed * horizontalSpeed;
+        velocity.x = _speedMax * horizontalSpeed;
         _rigidbody.linearVelocity = velocity;
     }
 
