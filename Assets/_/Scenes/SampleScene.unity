@@ -711,7 +711,7 @@ MonoBehaviour:
   _animator: {fileID: 781736990}
   _playerMovement: {fileID: 781736997}
   _renderer: {fileID: 0}
-  _speedParamName: Speed
+  _speedParamName: SpeedAbs
   _isJumpingParamName: IsJumping
 --- !u!1 &1177993869
 GameObject:
