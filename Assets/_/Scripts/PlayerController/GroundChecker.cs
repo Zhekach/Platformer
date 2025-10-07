@@ -3,14 +3,13 @@
 public class GroundChecker : MonoBehaviour
 {
     [SerializeField] private Vector2 _offset = new Vector2(0f, -1f);
-    [SerializeField] private float _radius = 0.1f;
+    [SerializeField] private Vector2 _size = new Vector2(2f, 0.1f);
     [SerializeField] private LayerMask _groundLayer;
 
-    [Header("Debug")] 
-    [SerializeField] private bool _drawGizmos;
+    [Header("Debug")] [SerializeField] private bool _drawGizmos;
 
     private Vector3 _offset3D;
-    
+
     public bool IsGrounded => CheckGrounded();
 
     private void Awake()
@@ -20,24 +19,18 @@ public class GroundChecker : MonoBehaviour
 
     private bool CheckGrounded()
     {
-        Collider2D overlappedCollider = Physics2D.OverlapCircle(transform.position + _offset3D, _radius, _groundLayer);
-        
+        Collider2D overlappedCollider = Physics2D.OverlapBox(transform.position + _offset3D, _size, 0f,_groundLayer);
         return overlappedCollider != null;
     }
-    
+
     private void OnDrawGizmosSelected()
     {
         if (!_drawGizmos)
             return;
 
         Vector2 checkPosition = (Vector2)transform.position + _offset;
-        Gizmos.color = IsGrounded ? Color.green : Color.red;
-
-        DrawCapsuleGizmo(checkPosition, _radius);
-    }
-
-    private void DrawCapsuleGizmo(Vector2 center, float radius)
-    {
-        Gizmos.DrawWireSphere(center, radius);
+        
+        Gizmos.color = IsGrounded ? Color.yellow : Color.red;
+        Gizmos.DrawWireCube(checkPosition, _size);
     }
 }

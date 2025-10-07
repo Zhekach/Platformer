@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(GroundChecker))]
+[RequireComponent(typeof(Rigidbody2D), typeof(GroundChecker), typeof(WallChecker))]
 public class PlayerMovementSimple : MonoBehaviour, IPlayerMovement
 {
     [SerializeField] private GroundChecker _groundChecker;
+    [SerializeField] private WallChecker _wallChecker;
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] private float _jumpForce = 1.5f;
     [SerializeField] private float _speedMax = 5f;
 
     private float _currentSpeed;
-    
+
     public bool IsGrounded => _groundChecker.IsGrounded;
 
     public float Speed => _currentSpeed;
@@ -17,14 +18,24 @@ public class PlayerMovementSimple : MonoBehaviour, IPlayerMovement
     private void Awake()
     {
         _groundChecker = GetComponent<GroundChecker>();
+        _wallChecker = GetComponent<WallChecker>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     public void Move(float horizontalSpeed)
     {
-        _currentSpeed = horizontalSpeed;
         Vector2 velocity = _rigidbody.linearVelocity;
-        velocity.x = _speedMax * horizontalSpeed;
+        
+        if (horizontalSpeed > 0 && _wallChecker.IsRightWallTouched == false)
+            velocity.x = _speedMax * horizontalSpeed;
+        else if(horizontalSpeed < 0 && _wallChecker.IsLeftWallTouched == false)
+            velocity.x = _speedMax * horizontalSpeed;
+        else
+            velocity.x = 0;
+        
+        _currentSpeed = velocity.x;
+        
+        Debug.Log($"input: {horizontalSpeed}, result: {velocity.x}");
         _rigidbody.linearVelocity = velocity;
     }
 
