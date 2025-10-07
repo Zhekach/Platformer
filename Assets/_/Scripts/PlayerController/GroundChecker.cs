@@ -4,6 +4,7 @@ public class GroundChecker : MonoBehaviour
 {
     [SerializeField] private Vector2 _offset = new Vector2(0f, -1f);
     [SerializeField] private float _radius = 0.1f;
+    [SerializeField] private LayerMask _groundLayer;
 
     [Header("Debug")] 
     [SerializeField] private bool _drawGizmos;
@@ -19,9 +20,9 @@ public class GroundChecker : MonoBehaviour
 
     private bool CheckGrounded()
     {
-        Collider2D collider = Physics2D.OverlapCircle(transform.position + _offset3D, _radius);
+        Collider2D overlappedCollider = Physics2D.OverlapCircle(transform.position + _offset3D, _radius, _groundLayer);
         
-        return collider.TryGetComponent<Ground>(out _);
+        return overlappedCollider != null;
     }
     
     private void OnDrawGizmosSelected()
