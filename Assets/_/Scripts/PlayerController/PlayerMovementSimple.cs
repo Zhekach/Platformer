@@ -35,7 +35,6 @@ public class PlayerMovementSimple : MonoBehaviour, IPlayerMovement
         
         _currentSpeed = velocity.x;
         
-        Debug.Log($"input: {horizontalSpeed}, result: {velocity.x}");
         _rigidbody.linearVelocity = velocity;
     }
 

@@ -1,0 +1,68 @@
+﻿using UnityEngine;
+
+/// <summary>
+/// Камера следует за целью в 2D, но только если цель выходит за зону допуска.
+/// </summary>
+[RequireComponent(typeof(Camera))]
+public class CameraFollow2D : MonoBehaviour
+{
+    [Header("Основные настройки")]
+    [SerializeField] private Transform _target;               // Цель, за которой следим
+    [SerializeField] private float _smoothSpeed = 5f;         // Скорость догоняющего движения
+
+    [Header("Зона допуска (в мире, в единицах Unity)")]
+    [SerializeField] private float _xThreshold = 2f;          // Допустимое отклонение по X
+    [SerializeField] private float _yThreshold = 1.5f;        // Допустимое отклонение по Y
+    
+    [Header("Debug")]
+    [SerializeField] private bool _drawGizmos;
+    
+    private Vector3 _targetPosition;                          // Позиция, куда камера должна стремиться
+    private Camera _camera;
+    
+    private void Awake()
+    {
+        _camera = GetComponent<Camera>();
+    }
+
+    private void LateUpdate()
+    {
+        if (_target == null)
+            return;
+
+        Vector3 cameraPosition = transform.position;
+        Vector3 targetPosition = _target.position;
+
+        // Проверяем, вышел ли игрок за пределы зоны допуска
+        bool needMoveX = Mathf.Abs(targetPosition.x - cameraPosition.x) > _xThreshold;
+        bool needMoveY = Mathf.Abs(targetPosition.y - cameraPosition.y) > _yThreshold;
+
+        if (needMoveX || needMoveY)
+        {
+            // Цель для движения — позиция игрока, но на той же высоте камеры (если не нужно двигать по Y)
+            _targetPosition = new Vector3(
+                needMoveX ? targetPosition.x : cameraPosition.x,
+                needMoveY ? targetPosition.y : cameraPosition.y,
+                cameraPosition.z
+            );
+        }
+
+        // Плавно движемся к целевой позиции
+        transform.position = Vector3.Lerp(cameraPosition, _targetPosition, Time.deltaTime * _smoothSpeed);
+    }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
+    {
+        if (_target == null || _drawGizmos == false)
+            return;
+
+        Gizmos.color = Color.yellow;
+
+        // Отрисовка прямоугольной зоны допуска
+        Vector3 center = new Vector3(transform.position.x, transform.position.y, 0f);
+        Vector3 size = new Vector3(_xThreshold * 2f, _yThreshold * 2f, 0f);
+        Gizmos.DrawWireCube(center, size);
+    }
+#endif
+}
