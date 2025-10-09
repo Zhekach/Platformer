@@ -16,9 +16,21 @@ public class PlayerRoot : MonoBehaviour
 
     private void Update()
     {
+        UpdateMovement();
+        UpdateAnimation();
+    }
+
+    private void UpdateMovement()
+    {
         _playerMovement.Move(_playerInput.HorizontalInput);
 
         if (_playerInput.JumpInput)
             _playerMovement.Jump();
+    }
+
+    private void UpdateAnimation()
+    {
+        _animatorAdapter.SetMovementAnimation(_playerMovement.Speed);
+        _animatorAdapter.SetJumpAnimation(_playerMovement.IsGrounded);
     }
 }

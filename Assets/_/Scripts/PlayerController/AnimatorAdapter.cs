@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(PlayerMovementSimple))]
+[RequireComponent(typeof(Animator))]
 public class AnimatorAdapter : MonoBehaviour
 {
     private const float SpeedDeltaMin = 0.01f;
     
     [SerializeField] private Animator _animator;
-    private IPlayerMovement _playerMovement;
     
     private readonly int Speed = Animator.StringToHash(nameof(Speed));
     private readonly int IsJumping = Animator.StringToHash(nameof(IsJumping));
@@ -17,16 +16,9 @@ public class AnimatorAdapter : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _playerMovement = GetComponent<IPlayerMovement>();
     }
 
-    public void Update()
-    {
-        SetMovementAnimation(_playerMovement.Speed);
-        SetJumpAnimation(_playerMovement.IsGrounded);
-    }
-
-    private void SetMovementAnimation(float speed)
+    public void SetMovementAnimation(float speed)
     {
         float speedAbs = Mathf.Abs(speed);
         
@@ -40,7 +32,7 @@ public class AnimatorAdapter : MonoBehaviour
         _lastSpeedAbs = speedAbs;
     }
 
-    private void SetJumpAnimation(bool isGrounded)
+    public void SetJumpAnimation(bool isGrounded)
     {
         if(isGrounded == _lastIsGrounded)
             return;
