@@ -2,11 +2,7 @@
 
 public class Coin : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.TryGetComponent<PlayerController>(out _))
-        {
-            Destroy(gameObject);
-        }
-    }
+    [SerializeField] private int _value = 1;
+
+    public int Value => _value;
 }
