@@ -10,10 +10,11 @@ public class PlayerMovementSimple : MonoBehaviour, IPlayerMovement
     [SerializeField] private float _speedMax = 5f;
 
     private float _currentSpeed;
-
-    public bool IsGrounded => _groundChecker.IsGrounded;
-
+    
     public float Speed => _currentSpeed;
+    public bool IsGrounded => _groundChecker.IsGrounded;
+    public bool IsRightWallTouched => _wallChecker.IsRightWallTouched;
+    public bool IsLeftWallTouched => _wallChecker.IsLeftWallTouched;
 
     private void Awake()
     {

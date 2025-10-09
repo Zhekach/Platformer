@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //if (_playerInput.HorizontalInput != 0)
         _playerMovement.Move(_playerInput.HorizontalInput);
 
         if (_playerInput.JumpInput)
