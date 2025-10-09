@@ -1,7 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-[Serializable]
 public class PlayerInputOldSystem : MonoBehaviour, IPlayerInput
 {
     public float HorizontalInput => Input.GetAxis("Horizontal");

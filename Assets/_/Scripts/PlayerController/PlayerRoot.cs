@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerInputOldSystem), typeof(PlayerMovementSimple), typeof(AnimatorAdapter))]
-public class PlayerController : MonoBehaviour
+public class PlayerRoot : MonoBehaviour
 {
     private IPlayerInput _playerInput;
     private IPlayerMovement _playerMovement;
