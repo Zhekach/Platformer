@@ -1,23 +1,20 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Камера следует за целью в 2D, но только если цель выходит за зону допуска.
-/// </summary>
 [RequireComponent(typeof(Camera))]
 public class CameraFollow2D : MonoBehaviour
 {
     [Header("Основные настройки")]
-    [SerializeField] private Transform _target;               // Цель, за которой следим
-    [SerializeField] private float _smoothSpeed = 5f;         // Скорость догоняющего движения
+    [SerializeField] private Transform _target;               
+    [SerializeField] private float _smoothSpeed = 5f;        
 
     [Header("Зона допуска (в мире, в единицах Unity)")]
-    [SerializeField] private float _xThreshold = 2f;          // Допустимое отклонение по X
-    [SerializeField] private float _yThreshold = 1.5f;        // Допустимое отклонение по Y
+    [SerializeField] private float _xThreshold = 2f;          
+    [SerializeField] private float _yThreshold = 1.5f;        
     
     [Header("Debug")]
     [SerializeField] private bool _drawGizmos;
     
-    private Vector3 _targetPosition;                          // Позиция, куда камера должна стремиться
+    private Vector3 _targetPosition;                          
     private Camera _camera;
     
     private void Awake()
@@ -33,13 +30,11 @@ public class CameraFollow2D : MonoBehaviour
         Vector3 cameraPosition = transform.position;
         Vector3 targetPosition = _target.position;
 
-        // Проверяем, вышел ли игрок за пределы зоны допуска
         bool needMoveX = Mathf.Abs(targetPosition.x - cameraPosition.x) > _xThreshold;
         bool needMoveY = Mathf.Abs(targetPosition.y - cameraPosition.y) > _yThreshold;
 
         if (needMoveX || needMoveY)
         {
-            // Цель для движения — позиция игрока, но на той же высоте камеры (если не нужно двигать по Y)
             _targetPosition = new Vector3(
                 needMoveX ? targetPosition.x : cameraPosition.x,
                 needMoveY ? targetPosition.y : cameraPosition.y,
@@ -47,7 +42,6 @@ public class CameraFollow2D : MonoBehaviour
             );
         }
 
-        // Плавно движемся к целевой позиции
         transform.position = Vector3.Lerp(cameraPosition, _targetPosition, Time.deltaTime * _smoothSpeed);
     }
 
@@ -59,7 +53,6 @@ public class CameraFollow2D : MonoBehaviour
 
         Gizmos.color = Color.yellow;
 
-        // Отрисовка прямоугольной зоны допуска
         Vector3 center = new Vector3(transform.position.x, transform.position.y, 0f);
         Vector3 size = new Vector3(_xThreshold * 2f, _yThreshold * 2f, 0f);
         Gizmos.DrawWireCube(center, size);

@@ -22,7 +22,8 @@ public class GroundChecker : MonoBehaviour
         Collider2D overlappedCollider = Physics2D.OverlapBox(transform.position + _offset3D, _size, 0f,_groundLayer);
         return overlappedCollider != null;
     }
-
+    
+#if UNITY_EDITOR    
     private void OnDrawGizmosSelected()
     {
         if (!_drawGizmos)
@@ -33,4 +34,5 @@ public class GroundChecker : MonoBehaviour
         Gizmos.color = IsGrounded ? Color.yellow : Color.red;
         Gizmos.DrawWireCube(checkPosition, _size);
     }
+#endif    
 }

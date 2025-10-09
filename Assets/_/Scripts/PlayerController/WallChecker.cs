@@ -36,7 +36,8 @@ public class WallChecker : MonoBehaviour
         
         return colliderOverlapped != null;
     }
-
+    
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         if(_drawGizmos == false)
@@ -51,4 +52,5 @@ public class WallChecker : MonoBehaviour
         Gizmos.color = IsRightWallTouched  ? Color.green : Color.red;
         Gizmos.DrawWireCube(checkRightPosition, _size);
     }
+#endif
 }
