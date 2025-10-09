@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerRoot), typeof(Collider2D))]
 public class CoinsCollector : MonoBehaviour

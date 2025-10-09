@@ -2,11 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
-<<<<<<<< HEAD:Assets/_/Scripts/Enemy/EnemyPingPong.cs
-public class EnemyPingPong : Enemy
-========
 public class PingPong : MonoBehaviour
->>>>>>>> main:Assets/_/Scripts/PingPong.cs
 {
     [SerializeField] private float _lengthX;
     [SerializeField] private float _speed;
