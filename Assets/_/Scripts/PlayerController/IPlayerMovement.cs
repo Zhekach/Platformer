@@ -1,7 +1,6 @@
-﻿public interface IPlayerMovement
+﻿public interface IPlayerMovement : IJumper
 {
     void Move(float horizontalSpeed);
-    void Jump();
     
     float Speed { get; }
     bool IsGrounded { get; }

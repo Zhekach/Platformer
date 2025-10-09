@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementSimple), typeof(Transform))]
 public class PlayerFlipper : MonoBehaviour
