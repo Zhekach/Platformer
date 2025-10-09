@@ -6,13 +6,11 @@ public class AnimatorAdapter : MonoBehaviour
     private const float SpeedDeltaMin = 0.01f;
     
     [SerializeField] private Animator _animator;
-    [SerializeField] private IPlayerMovement _playerMovement;
-    [SerializeField] private string _speedParamName = "SpeedAbs";
-    [SerializeField] private string _isJumpingParamName = "IsJumping";
+    private IPlayerMovement _playerMovement;
     
-    private int _speedHash; 
-    private int _isJumpingHash;
-
+    private readonly int Speed = Animator.StringToHash(nameof(Speed));
+    private readonly int IsJumping = Animator.StringToHash(nameof(IsJumping));
+    
     private float _lastSpeedAbs;
     private bool _lastIsGrounded;
 
@@ -20,8 +18,6 @@ public class AnimatorAdapter : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _playerMovement = GetComponent<IPlayerMovement>();
-        _speedHash = Animator.StringToHash(_speedParamName);
-        _isJumpingHash = Animator.StringToHash(_isJumpingParamName);
     }
 
     public void Update()
@@ -40,7 +36,7 @@ public class AnimatorAdapter : MonoBehaviour
         if(Mathf.Approximately(speedAbs, _lastSpeedAbs))
             return;
         
-        _animator.SetFloat(_speedHash, speedAbs);
+        _animator.SetFloat(Speed, speedAbs);
         _lastSpeedAbs = speedAbs;
     }
 
@@ -49,7 +45,7 @@ public class AnimatorAdapter : MonoBehaviour
         if(isGrounded == _lastIsGrounded)
             return;
         
-        _animator.SetBool(_isJumpingHash, !isGrounded);
+        _animator.SetBool(IsJumping, !isGrounded);
         _lastIsGrounded = isGrounded;
     }
 }
