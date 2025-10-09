@@ -971,9 +971,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AnimatorAdapter
   _animator: {fileID: 781736990}
-  _playerMovement: {fileID: 781736997}
-  _speedParamName: SpeedAbs
-  _isJumpingParamName: IsJumping
 --- !u!114 &781736999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -986,7 +983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb20ba1095045ebbf3e0f68208c4919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WallChecker
-  _leftOffset: {x: -0.6, y: -0.2}
+  _leftOffset: {x: -0.65, y: -0.2}
   _rightOffset: {x: 0.65, y: -0.2}
   _size: {x: 0.1, y: 1.3}
   _layerMask:
