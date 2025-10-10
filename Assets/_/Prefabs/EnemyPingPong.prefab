@@ -9,10 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7283156811972454593}
+  - component: {fileID: 3190883204648474728}
+  - component: {fileID: 6421609254536186500}
+  - component: {fileID: 1344981801393907577}
   - component: {fileID: 5779843849443583613}
   - component: {fileID: 6767746562258384248}
   - component: {fileID: 5518586793189695186}
-  - component: {fileID: 3190883204648474728}
   m_Layer: 0
   m_Name: EnemyPingPong
   m_TagString: Untagged
@@ -35,6 +37,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3190883204648474728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722199223684518699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a94a6ed05e591048bc725f0e2933549, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PingPong
+  _lengthX: 5
+  _speed: 3
+--- !u!114 &6421609254536186500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722199223684518699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3750e1a3004305ad07f7c04845ac57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
+  _power: 5
+--- !u!114 &1344981801393907577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722199223684518699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76ef1f0997d04d8c97cd3a3264c4edaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  _maxHealth: 10
 --- !u!50 &5779843849443583613
 Rigidbody2D:
   serializedVersion: 5
@@ -166,17 +208,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3190883204648474728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6722199223684518699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a94a6ed05e591048bc725f0e2933549, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PingPong
-  _lengthX: 5
-  _speed: 3
