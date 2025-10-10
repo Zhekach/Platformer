@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5779843849443583613}
   - component: {fileID: 6767746562258384248}
   - component: {fileID: 5518586793189695186}
-  - component: {fileID: 2143192584580834166}
+  - component: {fileID: 3190883204648474728}
   m_Layer: 0
   m_Name: EnemyPingPong
   m_TagString: Untagged
@@ -166,7 +166,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2143192584580834166
+--- !u!114 &3190883204648474728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,7 +175,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6722199223684518699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f1587b0084344c4ae4b4433777a9c5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a94a6ed05e591048bc725f0e2933549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PingPong
   _lengthX: 5
