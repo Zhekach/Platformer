@@ -1,14 +1,19 @@
-﻿using UnityEngine;
+﻿using Unity.Collections;
+using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float _maxHealth = 10f;
-
-    private float _currentHealth;
+    [SerializeField] private float _currentHealth;
     
     private void Awake()
     {
         _currentHealth = _maxHealth;
+    }
+    
+    public void Update()
+    {
+        Debug.Log(_currentHealth);
     }
 
     public void GetDamage(float damage)
@@ -17,5 +22,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (_currentHealth == 0)
             Destroy(gameObject);
+    }
+    
+    public void Heal(float heal)
+    {
+        _currentHealth = Mathf.Clamp(_currentHealth + heal, 0, _maxHealth);
     }
 }
