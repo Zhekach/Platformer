@@ -10,11 +10,6 @@ public class PlayerHealth : MonoBehaviour
     {
         _currentHealth = _maxHealth;
     }
-    
-    public void Update()
-    {
-        Debug.Log(_currentHealth);
-    }
 
     public void GetDamage(float damage)
     {
