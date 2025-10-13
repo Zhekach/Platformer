@@ -3313,17 +3313,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1631085689}
     m_Modifications:
+    - target: {fileID: 3190883204648474728, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
+      propertyPath: _lengthX
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6722199223684518699, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_Name
       value: EnemyPingPong
       objectReference: {fileID: 0}
+    - target: {fileID: 6722199223684518699, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.02532
+      value: -30.43
       objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.3208637
+      value: 3.37
       objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3426,17 +3434,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1631085689}
     m_Modifications:
+    - target: {fileID: 3190883204648474728, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
+      propertyPath: _lengthX
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6722199223684518699, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_Name
       value: EnemyPingPong
       objectReference: {fileID: 0}
+    - target: {fileID: 6722199223684518699, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 15.903658
+      value: 13.06
       objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2659118
+      value: 3.32
       objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3488,17 +3504,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1631085689}
     m_Modifications:
+    - target: {fileID: 3190883204648474728, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
+      propertyPath: _lengthX
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6722199223684518699, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_Name
       value: EnemyPingPong
       objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.84823
+      value: -14.4
       objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.51265
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.z

@@ -52,7 +52,7 @@ public class PlayerDetector : MonoBehaviour
                 OnPlayerMissed?.Invoke();
             }
 
-            if (isPlayerDetectedNow)
+            else if (isPlayerDetectedNow && _isPlayerDetected == false)
             {
                 _isPlayerDetected = true;
                 OnPlayerDetected?.Invoke(playerTransform);

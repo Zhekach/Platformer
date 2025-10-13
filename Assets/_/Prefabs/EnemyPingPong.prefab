@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1344981801393907577}
   - component: {fileID: 339722282747779273}
   - component: {fileID: 95170487682489974}
+  - component: {fileID: -3206162198247885640}
   - component: {fileID: 5779843849443583613}
   - component: {fileID: 6767746562258384248}
   - component: {fileID: 5518586793189695186}
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PingPong
   _lengthX: 5
-  _speed: 3
+  _rigidbody: {fileID: 0}
 --- !u!114 &6421609254536186500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befab305a2ae4ee9ac47097901c93a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSearcher
-  _radius: 7
+  _radius: 4
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -110,6 +111,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
   _playerDetector: {fileID: 339722282747779273}
   _pingPong: {fileID: 3190883204648474728}
+  _playerChaser: {fileID: 0}
+  _speed: 3
+--- !u!114 &-3206162198247885640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722199223684518699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c88d8f19cd54609b121c65c338a8b8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerChaser
+  _rigidbody: {fileID: 5779843849443583613}
+  _playerTransform: {fileID: 0}
 --- !u!50 &5779843849443583613
 Rigidbody2D:
   serializedVersion: 5
@@ -118,7 +135,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6722199223684518699}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -136,7 +153,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6767746562258384248
 BoxCollider2D:
   m_ObjectHideFlags: 0
