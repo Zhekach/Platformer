@@ -576,6 +576,7 @@ GameObject:
   - component: {fileID: 781736996}
   - component: {fileID: 781736999}
   - component: {fileID: 781737003}
+  - component: {fileID: 781737005}
   - component: {fileID: 781737004}
   - component: {fileID: 781737002}
   - component: {fileID: 781736998}
@@ -898,8 +899,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 082fd334887c41118993fc28a62e6a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  _maxHealth: 50
-  _currentHealth: 0
+  _maxValue: 10
+  _currentValue: 0
 --- !u!114 &781737004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,7 +913,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09dd026d11f3458dae2cd47fa92a6a29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthKitCollector
-  _playerHealth: {fileID: 781737003}
+  _health: {fileID: 0}
+--- !u!114 &781737005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781736985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00521acde52f4905bc0a5d3f421cf8c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathHandler
+  _health: {fileID: 781737003}
 --- !u!1 &802226900
 GameObject:
   m_ObjectHideFlags: 0

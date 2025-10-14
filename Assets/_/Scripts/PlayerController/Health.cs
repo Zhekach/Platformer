@@ -3,12 +3,17 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float _maxHealth = 10f;
-    [SerializeField] private float _currentHealth;
+    [SerializeField] private float _maxValue = 10f;
+    [SerializeField] private float _currentValue;
     
+    public event Action OnHealthChanged;
+
+    public float MaxValue => _maxValue;
+    public float CurrentValue => _currentValue;
+
     private void Awake()
     {
-        _currentHealth = _maxHealth;
+        _currentValue = _maxValue;
     }
 
     public void Damage(float damage)
@@ -16,14 +21,15 @@ public class Health : MonoBehaviour
         if (damage < 0)
             throw new ArgumentException("Урон не может быть отрицательным");
         
-        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
-
-        if (_currentHealth == 0)
-            Destroy(gameObject);
+        _currentValue = Mathf.Clamp(_currentValue - damage, 0, _maxValue);
+        
+        OnHealthChanged?.Invoke();
     }
     
     public void Heal(float heal)
     {
-        _currentHealth = Mathf.Clamp(_currentHealth + heal, 0, _maxHealth);
+        _currentValue = Mathf.Clamp(_currentValue + heal, 0, _maxValue);
+        
+        OnHealthChanged?.Invoke();
     }
 }
