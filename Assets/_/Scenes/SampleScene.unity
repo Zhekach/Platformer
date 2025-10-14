@@ -284,7 +284,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -3323,7 +3323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6722199223684518699, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3444,7 +3444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6722199223684518699, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7283156811972454593, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3552,7 +3552,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9161661832941992734, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9161661832941992734, guid: a23aaadc34b0c7344ba95b8d66c6a007, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

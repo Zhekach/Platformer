@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PingPong : MonoBehaviour
 {
-    [SerializeField] private float _lengthX;
     [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private float _lengthX;
     
     private float _speed;
     private float _startX;
