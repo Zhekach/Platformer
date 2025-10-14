@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(PlayerHealth))]
+[RequireComponent(typeof(Health))]
 public class HealthKitCollector : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth _playerHealth;
+    [SerializeField] private Health _health;
 
     private void Awake()
     {
-        _playerHealth = GetComponent<PlayerHealth>();
+        _health = GetComponent<Health>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -15,7 +15,7 @@ public class HealthKitCollector : MonoBehaviour
         if (other.gameObject.TryGetComponent(out HealthKit healthKit) == false)
             return;
 
-        _playerHealth.Heal(healthKit.HealAmount);
+        _health.Heal(healthKit.HealAmount);
         Destroy(healthKit.gameObject);
     }
 }

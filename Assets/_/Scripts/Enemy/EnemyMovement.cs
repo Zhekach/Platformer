@@ -36,14 +36,12 @@ public class EnemyMovement : MonoBehaviour
     
     private void MoveToPlayer(Transform player)
     {
-        Debug.Log("Move to player");
         _playerChaser.ChasePlayer(player);
         _pingPong.StopMoving();
     }
     
     private void PatrolZone()
     {
-        Debug.Log("Patrol zone");
         _pingPong.StartMoving();
         _playerChaser.StopChasePlayer();
     }

@@ -44,8 +44,6 @@ public class PingPong : MonoBehaviour
     {
         _rigidbody.linearVelocity = new Vector2(_direction * _speed, _rigidbody.linearVelocity.y);
         
-        Debug.Log(_rigidbody.linearVelocity.x + "   " + _direction );
-        
         if (_direction > 0 && transform.position.x >= _startX + _lengthX)
             _direction = -1;
         else if (_direction < 0 && transform.position.x <= _startX - _lengthX)

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7283156811972454593}
   - component: {fileID: 3190883204648474728}
   - component: {fileID: 6421609254536186500}
-  - component: {fileID: 1344981801393907577}
+  - component: {fileID: 7284825202707327635}
   - component: {fileID: 339722282747779273}
   - component: {fileID: 95170487682489974}
   - component: {fileID: -3206162198247885640}
@@ -53,8 +53,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a94a6ed05e591048bc725f0e2933549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PingPong
-  _lengthX: 5
   _rigidbody: {fileID: 0}
+  _lengthX: 5
 --- !u!114 &6421609254536186500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
   _power: 5
---- !u!114 &1344981801393907577
+--- !u!114 &7284825202707327635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -77,10 +77,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6722199223684518699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76ef1f0997d04d8c97cd3a3264c4edaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 082fd334887c41118993fc28a62e6a81, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  m_EditorClassIdentifier: Assembly-CSharp::Health
   _maxHealth: 10
+  _currentHealth: 0
 --- !u!114 &339722282747779273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerChaser
   _rigidbody: {fileID: 5779843849443583613}
-  _playerTransform: {fileID: 0}
 --- !u!50 &5779843849443583613
 Rigidbody2D:
   serializedVersion: 5

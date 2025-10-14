@@ -7,9 +7,9 @@ public class PlayerWeapon : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.TryGetComponent(out EnemyHealth enemy))
+        if (other.gameObject.TryGetComponent(out Health enemy))
         {
-            enemy.GetDamage(_power);
+            enemy.Damage(_power);
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerChaser : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] private Transform _playerTransform;
     
     private float _speed;
     private Coroutine _moving;
@@ -22,8 +21,7 @@ public class PlayerChaser : MonoBehaviour
     
     public void ChasePlayer(Transform target)
     {
-        _playerTransform = target;
-        _moving = StartCoroutine(Chasing());
+        _moving = StartCoroutine(Chasing(target));
     }
 
     public void StopChasePlayer()
@@ -35,11 +33,11 @@ public class PlayerChaser : MonoBehaviour
         _moving = null;
     } 
     
-    private IEnumerator Chasing()
+    private IEnumerator Chasing(Transform target)
     {
         while (enabled)
         {
-            float direction = _playerTransform.position.x > transform.position.x ? 1 : -1;
+            float direction = target.position.x > transform.position.x ? 1 : -1;
             _rigidbody.linearVelocity = new Vector2(direction * _speed, _rigidbody.linearVelocity.y);
             
             yield return null;

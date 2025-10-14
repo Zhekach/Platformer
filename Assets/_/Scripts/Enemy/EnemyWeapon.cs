@@ -7,7 +7,7 @@ public class EnemyWeapon : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent(out PlayerHealth player))
-            player.GetDamage(_power);
+        if (other.gameObject.TryGetComponent(out Health player))
+            player.Damage(_power);
     }
 }

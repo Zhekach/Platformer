@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class Health : MonoBehaviour
 {
     [SerializeField] private float _maxHealth = 10f;
     [SerializeField] private float _currentHealth;
@@ -10,8 +11,11 @@ public class PlayerHealth : MonoBehaviour
         _currentHealth = _maxHealth;
     }
 
-    public void GetDamage(float damage)
+    public void Damage(float damage)
     {
+        if (damage < 0)
+            throw new ArgumentException("Урон не может быть отрицательным");
+        
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
 
         if (_currentHealth == 0)

@@ -18,7 +18,7 @@ public class PlayerDetector : MonoBehaviour
     
     private void OnEnable()
     {
-        StartCoroutine(PlayerDetecting());
+        StartCoroutine(DetectingPlayer());
     }
 
     private void OnDisable()
@@ -40,7 +40,7 @@ public class PlayerDetector : MonoBehaviour
         return false;
     }
 
-    private IEnumerator PlayerDetecting()
+    private IEnumerator DetectingPlayer()
     {
         while (enabled)
         {
