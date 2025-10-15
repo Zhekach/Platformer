@@ -9,7 +9,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out Health enemy))
         {
-            enemy.Damage(_power);
+            enemy.TakeDamage(_power);
         }
     }
 }

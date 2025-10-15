@@ -16,7 +16,7 @@ public class Health : MonoBehaviour
         _currentValue = _maxValue;
     }
 
-    public void Damage(float damage)
+    public void TakeDamage(float damage)
     {
         if (damage < 0)
             throw new ArgumentException("Урон не может быть отрицательным");
