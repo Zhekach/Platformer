@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7283156811972454593}
   - component: {fileID: 3190883204648474728}
   - component: {fileID: 6421609254536186500}
-  - component: {fileID: 7284825202707327635}
+  - component: {fileID: 2526008780625509098}
   - component: {fileID: 4365283551668739032}
   - component: {fileID: 339722282747779273}
   - component: {fileID: 95170487682489974}
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyWeapon
   _power: 5
---- !u!114 &7284825202707327635
+--- !u!114 &2526008780625509098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -78,10 +78,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6722199223684518699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 082fd334887c41118993fc28a62e6a81, type: 3}
+  m_Script: {fileID: 11500000, guid: c2567e916154c75429be1fdebec0256a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  _maxValue: 10
+  _maxHealth: 100
   _currentValue: 0
 --- !u!114 &4365283551668739032
 MonoBehaviour:
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00521acde52f4905bc0a5d3f421cf8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathHandler
-  _health: {fileID: 7284825202707327635}
+  _health: {fileID: 0}
 --- !u!114 &339722282747779273
 MonoBehaviour:
   m_ObjectHideFlags: 0
