@@ -16,7 +16,7 @@ public class CoinsSpawner : MonoBehaviour
         foreach (var place in _places)
         {
             Coin newCoin = Instantiate(_coinPrefab, place.position, place.rotation);
-            newCoin.transform.parent = place;
+            newCoin.transform.parent = transform;
             place.gameObject.SetActive(false);
         }
     }
