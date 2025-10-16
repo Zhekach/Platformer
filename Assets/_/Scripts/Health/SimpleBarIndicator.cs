@@ -9,12 +9,12 @@ public class SimpleBarIndicator : HealthIndicator
     protected override void Start()
     {
         base.Start();
-        Slider.maxValue = Health.Max;
+        Slider.maxValue = Health.MaxValue;
     }
     
     protected override void UpdateInfo()
     {
-        Slider.value = Health.Current;
+        Slider.value = Health.CurrentValue;
 
         Slider.fillRect.gameObject.SetActive(Slider.value != 0);
     }

@@ -4,30 +4,30 @@ using UnityEngine.Serialization;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float _max = 100f;
-    [SerializeField] private float _current;
+    [SerializeField] private float _maxValue = 100f;
+    [SerializeField] private float _currentValue;
 
-    public event Action HealthChanged;
+    public event Action ChangedValue;
     
-    public float Max => _max;
-    public float Current => _current;
+    public float MaxValue => _maxValue;
+    public float CurrentValue => _currentValue;
 
     private void Awake()
     {
-        _current = _max;
+        _currentValue = _maxValue;
     }
 
     public void TakeDamage(float damage)
     {
-        _current = Mathf.Clamp(_current - damage, 0, _max);
+        _currentValue = Mathf.Clamp(_currentValue - damage, 0, _maxValue);
 
-        HealthChanged?.Invoke();
+        ChangedValue?.Invoke();
     }
     
     public void Heal(float heal)
     {
-        _current = Mathf.Clamp(_current + heal, 0, _max);
+        _currentValue = Mathf.Clamp(_currentValue + heal, 0, _maxValue);
         
-        HealthChanged?.Invoke();
+        ChangedValue?.Invoke();
     }
 }
