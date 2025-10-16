@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class VampirismView : MonoBehaviour
@@ -14,8 +13,7 @@ public class VampirismView : MonoBehaviour
 
     private void Awake()
     {
-        if(_spriteRenderer == null)
-            throw new ArgumentNullException($"Not assigned {nameof(SpriteRenderer)} to {name}");
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()

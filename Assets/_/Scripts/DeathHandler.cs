@@ -4,6 +4,7 @@
 public class DeathHandler : MonoBehaviour
 {
     [SerializeField] private Health _health;
+    
     private readonly float _minHealth = 0f;
     
     private void Awake()
