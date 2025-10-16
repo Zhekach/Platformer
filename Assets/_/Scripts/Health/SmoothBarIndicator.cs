@@ -19,9 +19,9 @@ public class SmoothBarIndicator : SimpleBarIndicator
 
     private IEnumerator SmoothUpdate()
     {
-        while (Mathf.Approximately(Slider.value, Health.CurrentValue) == false)
+        while (Mathf.Approximately(Slider.value, Health.Current) == false)
         {
-            Slider.value = Mathf.MoveTowards(Slider.value, Health.CurrentValue, _smoothDelta);
+            Slider.value = Mathf.MoveTowards(Slider.value, Health.Current, _smoothDelta);
             Slider.fillRect.gameObject.SetActive(Slider.value != 0);
 
             yield return null;

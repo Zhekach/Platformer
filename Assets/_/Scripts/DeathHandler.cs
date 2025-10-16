@@ -13,17 +13,17 @@ public class DeathHandler : MonoBehaviour
     
     private void OnEnable()
     {
-        _health.OnHealthChanged += Die;
+        _health.HealthChanged += Die;
     }
     
     private void OnDisable()
     {
-        _health.OnHealthChanged -= Die;
+        _health.HealthChanged -= Die;
     }
     
     private void Die()
     {
-        if(_health.CurrentValue > _minHealth)
+        if(_health.Current > _minHealth)
             return;
         
         Destroy(gameObject);

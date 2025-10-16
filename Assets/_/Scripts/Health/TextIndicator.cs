@@ -7,6 +7,6 @@ public class TextIndicator : HealthIndicator
 
     protected override void UpdateInfo()
     {
-        _text.text = (int)Health.CurrentValue + "/" + (int)Health.MaxHealth;
+        _text.text = (int)Health.Current + "/" + (int)Health.Max;
     }
 }

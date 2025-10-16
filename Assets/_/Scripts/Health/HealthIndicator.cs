@@ -11,12 +11,12 @@ public abstract class HealthIndicator : MonoBehaviour
 
     protected void OnEnable()
     {
-        Health.OnHealthChanged += UpdateInfo;
+        Health.HealthChanged += UpdateInfo;
     }
     
     protected void OnDisable()
     {
-        Health.OnHealthChanged -= UpdateInfo;
+        Health.HealthChanged -= UpdateInfo;
     }
 
     protected abstract void UpdateInfo();
