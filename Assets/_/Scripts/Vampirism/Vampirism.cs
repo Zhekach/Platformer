@@ -1,55 +1,59 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(VampirismDetector), typeof(VampirismTimer))]
+[RequireComponent(typeof(VampirismTimer))]
 public class Vampirism : MonoBehaviour
 {
     [SerializeField] private float _healPerSecond;
     [SerializeField] private float _radius;
-    [SerializeField] private VampirismDetector _detector;
     [SerializeField] private VampirismTimer _timer;
-    [SerializeField] private VampirismView _view;
     [SerializeField] private VampirismBarIndicator _indicator;
     [SerializeField] private Health _health;
-
+    
+    private VampirismDetector _detector;
+    private VampirismState _state;
+    
+    public event Action StateChanged;
+    
+    public VampirismState State => _state;
+    public VampirismTimer Timer => _timer;
+    public float Radius => _radius;
+    
     private void Awake()
     {
-        InitializeComponents();
+        _timer = GetComponent<VampirismTimer>();
+        _detector = new VampirismDetector(_radius);
+        _state = VampirismState.Ready;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (_timer.State != VampirismState.Active)
-            return;
-
-        if (_detector.TryDetectTarget(out Transform targetTransform) == false)
-            return;
-        
-        if (targetTransform.TryGetComponent(out Health health))
-        {
-            health.TakeDamage(_healPerSecond * Time.fixedDeltaTime);
-            _health.Heal(_healPerSecond * Time.fixedDeltaTime);
-        }
+        ReleaseVampirism();
     }
 
+    public void ChangeState(VampirismState state)
+    {
+        _state = state;
+        StateChanged?.Invoke();
+    } 
+    
     public void Activate()
     {
         _timer.Activate();
     }
 
-    private void InitializeComponents()
+    private void ReleaseVampirism()
     {
-        _detector = GetComponent<VampirismDetector>();
-        _timer = GetComponent<VampirismTimer>();
+        if (_state != VampirismState.Active)
+            return;
 
-        if (_view == null)
-            throw new ArgumentNullException($"Not assigned {nameof(VampirismView)} to {name}");
-
-        if (_indicator == null)
-            throw new ArgumentNullException($"Not assigned {nameof(VampirismBarIndicator)} to {name}");
-
-        _detector.Initialize(_radius);
-        _view.Initialize(_timer, _radius);
-        _indicator.Initialize(_timer);
+        if (_detector.TryDetectTarget(transform, out Transform targetTransform) == false)
+            return;
+        
+        if (targetTransform.TryGetComponent(out Health health))
+        {
+            health.TakeDamage(_healPerSecond * Time.deltaTime);
+            _health.Heal(_healPerSecond * Time.deltaTime);
+        }
     }
 }

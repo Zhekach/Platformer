@@ -1,26 +1,29 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
 public class VampirismBarIndicator : MonoBehaviour
 {
-    [SerializeField] private VampirismTimer _timer;
+    [SerializeField] private Vampirism _model;
     [SerializeField] private Slider _slider;
 
+    private VampirismTimer _timer;
+    
     private void Awake()
     {
-        _slider = GetComponent<Slider>();
-
-    }
-    
-    public void Initialize(VampirismTimer timer)
-    {
-        _timer = timer;
+        if (_model == null)
+            throw new ArgumentNullException($"Not assigned {nameof(Vampirism)} to {name}");
+        
+        if (_slider == null)
+            throw new ArgumentNullException($"Not assigned {nameof(Slider)} to {name}");
+        
+        _timer = _model.Timer;
     }
     
     private void Update()
     {
-        switch (_timer.State)
+        switch (_model.State)
         {
             case(VampirismState.Ready):
                 SetReadyIndication();        

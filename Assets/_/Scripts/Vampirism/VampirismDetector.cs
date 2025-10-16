@@ -1,26 +1,26 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class VampirismDetector : MonoBehaviour
+public class VampirismDetector
 {
     private float _radius;
     private List<Collider2D> _results = new ();
     
-    public void Initialize(float radius)
+    public VampirismDetector(float radius)
     {
         _radius = radius;
     }
     
-    public bool TryDetectTarget(out Transform targetTransform)
+    public bool TryDetectTarget(Transform transform, out Transform targetTransform)
     {
         targetTransform = null;
         Physics2D.OverlapCircle(transform.position, _radius, ContactFilter2D.noFilter, _results);
-        targetTransform = FindNearestTarget(_results);
+        targetTransform = FindNearestTarget(transform, _results);
         
         return targetTransform != null;
     }
     
-    private Transform FindNearestTarget(List<Collider2D> results)
+    private Transform FindNearestTarget(Transform transform, List<Collider2D> results)
     {
         float maxDistance = float.MaxValue;
         Transform target = null;
@@ -33,11 +33,11 @@ public class VampirismDetector : MonoBehaviour
             if(result.TryGetComponent(out PlayerRoot _))
                 continue;
             
-            float distance = Vector2.Distance(transform.position, result.transform.position);
+            float distanceSquare = Vector2.SqrMagnitude((transform.position - result.transform.position));
             
-            if(distance < maxDistance)
+            if(distanceSquare < maxDistance)
             {
-                maxDistance = distance;
+                maxDistance = distanceSquare;
                 target = result.transform;
             }
         }

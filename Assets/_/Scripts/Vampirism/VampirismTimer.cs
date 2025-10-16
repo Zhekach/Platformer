@@ -1,33 +1,25 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class VampirismTimer : MonoBehaviour
 {
+    [SerializeField] private Vampirism _model;
     [SerializeField] private float _activeTimeMax = 6f;
     [SerializeField] private float _cooldownTimeMax = 4f;
-    [SerializeField] private VampirismState _state;
 
     private Coroutine _coroutine;
     private float _activeTimeLeft;
     private float _cooldownTimeLeft;
 
-    public event Action StateChanged;
-    
-    public VampirismState State => _state;
     public float ActiveTimeMax => _activeTimeMax;
     public float ActiveTimeLeft => _activeTimeLeft;
     public float CooldownTimeMax => _cooldownTimeMax;
     public float CooldownTimeLeft => _cooldownTimeLeft;
-
-    private void Start()
-    {
-        _state = VampirismState.Ready;
-    }
+    
 
     public void Activate()
     {
-        if (_state != VampirismState.Ready)
+        if (_model.State != VampirismState.Ready)
             return;
 
         ChangeState(VampirismState.Active);
@@ -62,14 +54,6 @@ public class VampirismTimer : MonoBehaviour
     
     private void ChangeState(VampirismState newState)
     {
-        _state = newState;
-        StateChanged?.Invoke();
+        _model.ChangeState(newState);
     }
-}
-
-public enum VampirismState
-{
-    Active,
-    Cooldown,
-    Ready
 }
