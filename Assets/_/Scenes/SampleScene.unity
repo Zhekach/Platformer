@@ -960,8 +960,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Vampirism
   _healPerSecond: 5
+  _radius: 4
   _detector: {fileID: 781737007}
   _timer: {fileID: 781737009}
+  _health: {fileID: 781737006}
 --- !u!114 &781737009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,8 +976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37b3214e19f9423fb238aaefb0f81bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VampirismTimer
-  _activeTime: 6
-  _cooldownTime: 4
+  _activeMaxTime: 6
+  _cooldownMaxTime: 4
   _state: 0
 --- !u!1 &796818383
 GameObject:

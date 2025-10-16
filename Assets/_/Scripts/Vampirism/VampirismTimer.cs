@@ -3,14 +3,19 @@ using UnityEngine;
 
 public class VampirismTimer : MonoBehaviour
 {
-    [SerializeField] private float _activeTime = 6f;
-    [SerializeField] private float _cooldownTime = 4f;
-    [SerializeField] private VampirismState _state = VampirismState.Ready;
+    [SerializeField] private float _activeMaxTime = 6f;
+    [SerializeField] private float _cooldownMaxTime = 4f;
+    [SerializeField] private VampirismState _state;
 
     private Coroutine _coroutine;
     
     public VampirismState State => _state;
 
+    private void Start()
+    {
+        _state = VampirismState.Ready;
+    }
+    
     public void Activate()
     {
         if(_state != VampirismState.Ready)
@@ -22,7 +27,7 @@ public class VampirismTimer : MonoBehaviour
     
     private IEnumerator ActiveTimer()
     {
-        yield return new WaitForSeconds(_activeTime);
+        yield return new WaitForSeconds(_activeMaxTime);
         _state = VampirismState.Cooldown;
         
         _coroutine = null;
@@ -31,7 +36,7 @@ public class VampirismTimer : MonoBehaviour
     
     private IEnumerator CooldownTimer()
     {
-        yield return new WaitForSeconds(_cooldownTime);
+        yield return new WaitForSeconds(_cooldownMaxTime);
         _state = VampirismState.Ready;
         
         _coroutine = null;
