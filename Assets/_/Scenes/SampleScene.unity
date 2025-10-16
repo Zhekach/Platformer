@@ -590,6 +590,9 @@ GameObject:
   - component: {fileID: 781736988}
   - component: {fileID: 781736990}
   - component: {fileID: 781737000}
+  - component: {fileID: 781737008}
+  - component: {fileID: 781737007}
+  - component: {fileID: 781737009}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -930,8 +933,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2567e916154c75429be1fdebec0256a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  _max: 100
-  _current: 0
+  _maxValue: 100
+  _currentValue: 0
+--- !u!114 &781737007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781736985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b8db6ad4634fc1be1390d7145ad2c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VampirismDetector
+--- !u!114 &781737008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781736985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62b7825d65548c8931bb08a38e55c5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Vampirism
+  _healPerSecond: 5
+  _detector: {fileID: 781737007}
+  _timer: {fileID: 781737009}
+--- !u!114 &781737009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781736985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37b3214e19f9423fb238aaefb0f81bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VampirismTimer
+  _activeTime: 6
+  _cooldownTime: 4
+  _state: 0
 --- !u!1 &796818383
 GameObject:
   m_ObjectHideFlags: 0
