@@ -9,11 +9,11 @@ public class VampirismTimer : MonoBehaviour
     [SerializeField] private VampirismState _state;
 
     private Coroutine _coroutine;
-    private WaitForSeconds _activeWait;
-    private WaitForSeconds _cooldownWait;
     private float _activeTimeLeft;
     private float _cooldownTimeLeft;
 
+    public event Action StateChanged;
+    
     public VampirismState State => _state;
     public float ActiveTimeMax => _activeTimeMax;
     public float ActiveTimeLeft => _activeTimeLeft;
@@ -23,20 +23,6 @@ public class VampirismTimer : MonoBehaviour
     private void Start()
     {
         _state = VampirismState.Ready;
-        _activeWait = new WaitForSeconds(_activeTimeMax);
-        _cooldownWait = new WaitForSeconds(_cooldownTimeMax);
-    }
-
-    private void Update()
-    {
-        if (_coroutine != null)
-            return;
-
-        if (_state == VampirismState.Cooldown )
-        {
-            _cooldownTimeLeft = _cooldownTimeMax;
-            _coroutine = StartCoroutine(CooldownTimer());
-        }
     }
 
     public void Activate()
@@ -44,7 +30,7 @@ public class VampirismTimer : MonoBehaviour
         if (_state != VampirismState.Ready)
             return;
 
-        _state = VampirismState.Active;
+        ChangeState(VampirismState.Active);
         _activeTimeLeft = _activeTimeMax;
         _coroutine = StartCoroutine(ActiveTimer());
     }
@@ -57,8 +43,9 @@ public class VampirismTimer : MonoBehaviour
             yield return null;
         }
 
-        _state = VampirismState.Cooldown;
-        _coroutine = null;
+        ChangeState(VampirismState.Cooldown);
+        _cooldownTimeLeft = _cooldownTimeMax;
+        _coroutine = StartCoroutine(CooldownTimer());
     }
 
     private IEnumerator CooldownTimer()
@@ -69,8 +56,14 @@ public class VampirismTimer : MonoBehaviour
             yield return null;
         }
 
-        _state = VampirismState.Ready;
+        ChangeState(VampirismState.Ready);
         _coroutine = null;
+    }
+    
+    private void ChangeState(VampirismState newState)
+    {
+        _state = newState;
+        StateChanged?.Invoke();
     }
 }
 

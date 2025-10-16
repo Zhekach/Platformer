@@ -9,23 +9,22 @@ public class VampirismView : MonoBehaviour
     [SerializeField] private Color _readyColor;
 
     private VampirismTimer _timer;
-    private float _radius;
 
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    private void OnDisable()
     {
-        SetState();
+        _timer.StateChanged -= SetState;
     }
 
     public void Initialize(VampirismTimer timer, float radius)
     {
         _timer = timer;
-        _radius = radius;
-        _spriteRenderer.transform.localScale = new Vector3(_radius * 2f, _radius * 2f, 1f);
+        _timer.StateChanged += SetState;
+        _spriteRenderer.transform.localScale = new Vector3(radius * 2f, radius * 2f, 1f);
     }
 
     private void SetState()

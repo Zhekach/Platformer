@@ -10,6 +10,7 @@ public class VampirismBarIndicator : MonoBehaviour
     private void Awake()
     {
         _slider = GetComponent<Slider>();
+
     }
     
     public void Initialize(VampirismTimer timer)

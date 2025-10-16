@@ -11,7 +11,7 @@ public class Vampirism : MonoBehaviour
     [SerializeField] private VampirismView _view;
     [SerializeField] private VampirismBarIndicator _indicator;
     [SerializeField] private Health _health;
-    
+
     private void Awake()
     {
         InitializeComponents();
@@ -19,14 +19,16 @@ public class Vampirism : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(_timer.State != VampirismState.Active)
+        if (_timer.State != VampirismState.Active)
+            return;
+
+        if (_detector.TryDetectTarget(out Transform targetTransform) == false)
             return;
         
-        if(_detector.TryDetectTarget(out Transform targetTransform))
+        if (targetTransform.TryGetComponent(out Health health))
         {
-            targetTransform.GetComponent<Health>().TakeDamage(_healPerSecond * Time.fixedDeltaTime);
+            health.TakeDamage(_healPerSecond * Time.fixedDeltaTime);
             _health.Heal(_healPerSecond * Time.fixedDeltaTime);
-            Debug.Log($"Vampirism {targetTransform.name}");
         }
     }
 
@@ -40,12 +42,12 @@ public class Vampirism : MonoBehaviour
         _detector = GetComponent<VampirismDetector>();
         _timer = GetComponent<VampirismTimer>();
 
-        if(_view == null)
+        if (_view == null)
             throw new ArgumentNullException($"Not assigned {nameof(VampirismView)} to {name}");
-        
-        if(_indicator == null)
+
+        if (_indicator == null)
             throw new ArgumentNullException($"Not assigned {nameof(VampirismBarIndicator)} to {name}");
-        
+
         _detector.Initialize(_radius);
         _view.Initialize(_timer, _radius);
         _indicator.Initialize(_timer);

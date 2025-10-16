@@ -4,6 +4,7 @@ using UnityEngine;
 public class VampirismDetector : MonoBehaviour
 {
     private float _radius;
+    private List<Collider2D> _results = new ();
     
     public void Initialize(float radius)
     {
@@ -12,28 +13,35 @@ public class VampirismDetector : MonoBehaviour
     
     public bool TryDetectTarget(out Transform targetTransform)
     {
-        List<Collider2D> results = new List<Collider2D>();
-        float maxDistance = float.MaxValue;
         targetTransform = null;
+        Physics2D.OverlapCircle(transform.position, _radius, ContactFilter2D.noFilter, _results);
+        targetTransform = FindNearestTarget(_results);
         
-        Physics2D.OverlapCircle(transform.position, _radius, ContactFilter2D.noFilter, results);
+        return targetTransform != null;
+    }
+    
+    private Transform FindNearestTarget(List<Collider2D> results)
+    {
+        float maxDistance = float.MaxValue;
+        Transform target = null;
         
         foreach(var result in results)
         {
-            if(result.TryGetComponent(out Health health) == false)
+            if(result.TryGetComponent(out Health _) == false)
                 continue;
             
             if(result.TryGetComponent(out PlayerRoot _))
                 continue;
             
             float distance = Vector2.Distance(transform.position, result.transform.position);
+            
             if(distance < maxDistance)
             {
                 maxDistance = distance;
-                targetTransform = result.transform;
+                target = result.transform;
             }
         }
         
-        return targetTransform != null;
+        return target;
     }
 }
