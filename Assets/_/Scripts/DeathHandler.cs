@@ -4,7 +4,7 @@
 public class DeathHandler : MonoBehaviour
 {
     [SerializeField] private Health _health;
-    
+    [SerializeField] private GameObject _objectToDestroy;
     private readonly float _minHealth = 0f;
     
     private void Awake()
@@ -27,6 +27,6 @@ public class DeathHandler : MonoBehaviour
         if(_health.CurrentValue > _minHealth)
             return;
         
-        Destroy(gameObject);
+        Destroy(_objectToDestroy);
     }
 }

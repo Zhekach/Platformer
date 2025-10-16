@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2567e916154c75429be1fdebec0256a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  _max: 100
-  _current: 0
+  _maxValue: 100
+  _currentValue: 0
 --- !u!114 &5909539900642519334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathHandler
   _health: {fileID: 8135006882772339656}
+  _objectToDestroy: {fileID: 8699333756839786458}
 --- !u!114 &1817555318700545674
 MonoBehaviour:
   m_ObjectHideFlags: 0

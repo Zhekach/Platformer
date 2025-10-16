@@ -1368,7 +1368,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00521acde52f4905bc0a5d3f421cf8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DeathHandler
-  _health: {fileID: 0}
+  _health: {fileID: 781737006}
+  _objectToDestroy: {fileID: 1088927750}
 --- !u!114 &781737006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,7 +1413,7 @@ MonoBehaviour:
   _detector: {fileID: 781737007}
   _timer: {fileID: 781737009}
   _view: {fileID: 537989937}
-  _indicator: {fileID: 0}
+  _indicator: {fileID: 450917805}
   _health: {fileID: 781737006}
 --- !u!114 &781737009
 MonoBehaviour:
